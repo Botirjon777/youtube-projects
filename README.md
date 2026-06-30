@@ -35,6 +35,7 @@ YYYY-MM-DD-slug/
 | 2026-07-14 | Marvel hero backgrounds (Iron Man · Thor · Spider-Man · Ant-Man) | 🦸 Fan pack | 🟢 Built |
 | 2026-07-16 | DC hero backgrounds (Batman · Superman · Flash · Green Lantern) | 🦇 Fan pack | 🟢 Built |
 | 2026-07-18 | Sci-fi movie backgrounds (Interstellar · Inception · Blade Runner) | 🎞️ Fan pack | 🟢 Built |
+| 2026-07-21 | Designer portfolio — single page (custom cursor, hover previews) | 🎨 Tech/Creative | 🟢 Built |
 
 See **[VIRAL-STRATEGY.md](VIRAL-STRATEGY.md)** for what's working and the idea backlog.
 

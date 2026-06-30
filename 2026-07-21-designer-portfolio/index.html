@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alex Rivera — Designer & Art Director</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- custom cursor -->
+  <div class="cursor-dot" id="dot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="ring" aria-hidden="true"></div>
+  <!-- floating work preview -->
+  <div class="work-preview" id="preview" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <header class="nav">
+    <a href="#top" class="logo">AR<span>.</span></a>
+    <nav class="menu">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+    </nav>
+    <a href="#contact" class="btn-magnetic" data-magnetic>Let's talk</a>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <p class="eyebrow reveal">Designer & Art Director · Lisbon</p>
+    <h1 class="display">
+      <span class="line reveal"><span>Designing</span></span>
+      <span class="line reveal"><span>brands that</span></span>
+      <span class="line reveal accent"><span>feel alive.</span></span>
+    </h1>
+    <div class="hero-foot">
+      <p class="reveal">I help startups and studios turn ideas into bold, memorable digital experiences — from identity to interface.</p>
+      <a href="#work" class="scroll-cue reveal">Selected work ↓</a>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Branding</span><span>•</span><span>UI / UX</span><span>•</span><span>Motion</span><span>•</span><span>Art Direction</span><span>•</span><span>Web Design</span><span>•</span>
+      <span>Branding</span><span>•</span><span>UI / UX</span><span>•</span><span>Motion</span><span>•</span><span>Art Direction</span><span>•</span><span>Web Design</span><span>•</span>
+    </div>
+  </div>
+
+  <!-- WORK -->
+  <section class="work" id="work">
+    <div class="section-head reveal">
+      <h2>Selected work</h2>
+      <span class="count">04 — 24</span>
+    </div>
+    <ul class="work-list">
+      <li class="work-item reveal" data-grad="linear-gradient(135deg,#ff6b9d,#ffd76a)">
+        <span class="idx">01</span>
+        <span class="title">Aurora — Brand Identity</span>
+        <span class="tags">Branding · Web</span>
+      </li>
+      <li class="work-item reveal" data-grad="linear-gradient(135deg,#5a6bff,#19d3ff)">
+        <span class="idx">02</span>
+        <span class="title">Nimbus — SaaS Platform</span>
+        <span class="tags">UI/UX · Motion</span>
+      </li>
+      <li class="work-item reveal" data-grad="linear-gradient(135deg,#19ff7a,#0bbf8a)">
+        <span class="idx">03</span>
+        <span class="title">Terra — Editorial Site</span>
+        <span class="tags">Art Direction</span>
+      </li>
+      <li class="work-item reveal" data-grad="linear-gradient(135deg,#b14bff,#ff2e88)">
+        <span class="idx">04</span>
+        <span class="title">Pulse — Mobile App</span>
+        <span class="tags">Product · Motion</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <h2 class="reveal">A designer obsessed with<br /><span class="accent">detail &amp; feeling.</span></h2>
+    <div class="about-grid">
+      <p class="reveal">For 8 years I've partnered with founders and creative teams to shape brands that don't just look good — they resonate. My work lives where strategy, typography and motion meet.</p>
+      <div class="stats">
+        <div class="stat reveal"><b data-count="120">0</b><small>Projects shipped</small></div>
+        <div class="stat reveal"><b data-count="8">0</b><small>Years designing</small></div>
+        <div class="stat reveal"><b data-count="14">0</b><small>Awards &amp; features</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-head reveal"><h2>What I do</h2></div>
+    <div class="cards">
+      <article class="card reveal"><span class="n">01</span><h3>Brand Identity</h3><p>Logos, systems and guidelines that give a brand a clear, confident voice.</p></article>
+      <article class="card reveal"><span class="n">02</span><h3>Web &amp; UI</h3><p>Responsive, accessible interfaces designed and prototyped down to the pixel.</p></article>
+      <article class="card reveal"><span class="n">03</span><h3>Motion</h3><p>Micro-interactions and animation that make products feel effortless and alive.</p></article>
+      <article class="card reveal"><span class="n">04</span><h3>Art Direction</h3><p>Cohesive visual worlds across photography, type and campaigns.</p></article>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <p class="eyebrow reveal">Have a project in mind?</p>
+    <a href="mailto:hello@alexrivera.design" class="big-cta reveal">Let's create<br />something <span class="accent">unforgettable.</span></a>
+    <div class="contact-foot reveal">
+      <a href="mailto:hello@alexrivera.design">hello@alexrivera.design</a>
+      <div class="socials">
+        <a href="#">Instagram</a><a href="#">Dribbble</a><a href="#">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span>© 2026 Alex Rivera</span>
+    <span>Designed &amp; built with care</span>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
