@@ -36,6 +36,9 @@ YYYY-MM-DD-slug/
 | 2026-07-16 | DC hero backgrounds (Batman · Superman · Flash · Green Lantern) | 🦇 Fan pack | 🟢 Built |
 | 2026-07-18 | Sci-fi movie backgrounds (Interstellar · Inception · Blade Runner) | 🎞️ Fan pack | 🟢 Built |
 | 2026-07-21 | Designer portfolio — single page (custom cursor, hover previews) | 🎨 Tech/Creative | 🟢 Built |
+| 2026-07-23 | Programmer portfolio (live terminal, code editor) | 💼 Profession | 🟢 Built |
+| 2026-07-25 | Pharmacist portfolio (floating pills, live open/closed) | 💼 Profession | 🟢 Built |
+| 2026-07-28 | Accountant portfolio (animated growth chart, counters) | 💼 Profession | 🟢 Built |
 
 See **[VIRAL-STRATEGY.md](VIRAL-STRATEGY.md)** for what's working and the idea backlog.
 
@@ -48,6 +51,15 @@ Each "pack" bundles 3–4 mouse-reactive `<canvas>` backgrounds around a theme, 
 - **Sci-Fi movies** ✅ → Tron, Dune, 2001, Tenet, Avatar
 - **By vibe** (planned): For Men · For Girls · For Anime · For Creativity
 - **Master showcase:** the 12-theme [interactive hero backgrounds](2026-07-11-interactive-hero-backgrounds/)
+
+## 💼 Profession portfolio series (one job = one video)
+
+"I designed a website for every profession" — each profession gets its own visual language.
+
+- **Programmer** ✅ — terminal that types itself, code editor, repo grid
+- **Pharmacist** ✅ — floating pill capsules, live Open/Closed status
+- **Accountant** ✅ — animated growth chart, $/%/+ counters
+- **Next ideas:** Architect · Lawyer · Chef · Photographer · Teacher · Real-estate agent · Barber · Fitness coach · Dentist · Musician
 
 ## Tech choices
 

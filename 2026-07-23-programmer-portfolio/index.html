@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sam Okoye — Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="nav">
+    <a href="#top" class="logo">~/sam<span class="blink">█</span></a>
+    <nav>
+      <a href="#stack">stack</a>
+      <a href="#work">work</a>
+      <a href="#contact">contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO terminal -->
+  <section class="hero" id="top">
+    <div class="terminal">
+      <div class="term-bar"><span></span><span></span><span></span><b>bash — sam@dev</b></div>
+      <pre class="term-body" id="term"></pre>
+    </div>
+    <p class="hero-sub reveal">Backend &amp; systems engineer. I build fast, reliable services and the tools around them.</p>
+  </section>
+
+  <!-- STACK -->
+  <section class="stack" id="stack">
+    <h2 class="reveal">// tech stack</h2>
+    <div class="tags" id="tags">
+      <span>TypeScript</span><span>Go</span><span>Rust</span><span>Python</span><span>Node.js</span>
+      <span>PostgreSQL</span><span>Redis</span><span>Docker</span><span>Kubernetes</span><span>AWS</span>
+      <span>gRPC</span><span>React</span><span>GraphQL</span><span>Kafka</span><span>Terraform</span>
+    </div>
+  </section>
+
+  <!-- CODE + STATS -->
+  <section class="snippet">
+    <div class="editor reveal">
+      <div class="editor-bar"><span class="fname">debounce.ts</span></div>
+      <pre class="code" id="code"></pre>
+    </div>
+    <div class="stats">
+      <div class="stat reveal"><b data-count="180">0</b><small>commits / month</small></div>
+      <div class="stat reveal"><b data-count="99" data-suffix=".9%">0</b><small>service uptime</small></div>
+      <div class="stat reveal"><b data-count="42">0</b><small>repos shipped</small></div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="work" id="work">
+    <h2 class="reveal">// selected work</h2>
+    <div class="repos">
+      <a class="repo reveal" href="#">
+        <div class="repo-top"><b>ratelimit-go</b><span>★ 2.1k</span></div>
+        <p>A distributed token-bucket rate limiter with Redis backing and a 12µs hot path.</p>
+        <div class="repo-lang"><i class="go"></i> Go · MIT</div>
+      </a>
+      <a class="repo reveal" href="#">
+        <div class="repo-top"><b>vectordb</b><span>★ 5.8k</span></div>
+        <p>Tiny embeddable vector database with HNSW search. Zero-dependency, single binary.</p>
+        <div class="repo-lang"><i class="rust"></i> Rust · Apache-2.0</div>
+      </a>
+      <a class="repo reveal" href="#">
+        <div class="repo-top"><b>flowforge</b><span>★ 880</span></div>
+        <p>Type-safe workflow engine for TypeScript with durable execution and retries.</p>
+        <div class="repo-lang"><i class="ts"></i> TypeScript · MIT</div>
+      </a>
+      <a class="repo reveal" href="#">
+        <div class="repo-top"><b>obslite</b><span>★ 1.4k</span></div>
+        <p>Drop-in metrics + tracing for small services. OpenTelemetry under the hood.</p>
+        <div class="repo-lang"><i class="py"></i> Python · BSD</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <pre class="prompt reveal">sam@dev:~$ ./hire-me<span class="blink">█</span></pre>
+    <a href="mailto:sam@okoye.dev" class="cta reveal">sam@okoye.dev</a>
+    <div class="links reveal"><a href="#">github</a><a href="#">linkedin</a><a href="#">/blog</a></div>
+  </section>
+
+  <footer class="foot">// © 2026 Sam Okoye — built from scratch, no frameworks</footer>
+  <script src="script.js"></script>
+</body>
+</html>

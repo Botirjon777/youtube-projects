@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Maya Hassan — Pharmacist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="pills" aria-hidden="true"></canvas>
+
+  <header class="nav">
+    <a href="#top" class="logo">⊕ Maya<span>Rx</span></a>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#hours">Hours</a>
+    </nav>
+    <a href="#book" class="btn">Book a consult</a>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <p class="eyebrow reveal">Licensed Community Pharmacist · BPharm, MRPharmS</p>
+    <h1 class="reveal">Caring for your health,<br /><span class="accent">one prescription at a time.</span></h1>
+    <p class="lede reveal">Hi, I'm Dr. Maya Hassan. I help you understand your medicines, manage chronic conditions, and stay well — with friendly, expert advice you can trust.</p>
+    <div class="hero-cta reveal">
+      <a href="#book" class="btn primary">Book a consultation</a>
+      <a href="#services" class="btn ghost">Our services</a>
+    </div>
+  </section>
+
+  <!-- TRUST STATS -->
+  <section class="trust">
+    <div class="stat reveal"><b data-count="12">0</b><small>years of care</small></div>
+    <div class="stat reveal"><b data-count="20" data-suffix="k+">0</b><small>prescriptions filled</small></div>
+    <div class="stat reveal"><b data-count="98" data-suffix="%">0</b><small>patient satisfaction</small></div>
+    <div class="stat reveal"><b data-count="7">0</b><small>days a week</small></div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <h2 class="reveal">How I can help</h2>
+    <div class="cards">
+      <article class="card reveal"><span class="ic">℞</span><h3>Prescriptions</h3><p>Fast, accurate dispensing with a clear explanation of every medicine.</p></article>
+      <article class="card reveal"><span class="ic">💉</span><h3>Vaccinations</h3><p>Flu, travel and routine vaccines administered safely on-site.</p></article>
+      <article class="card reveal"><span class="ic">🩺</span><h3>Health checks</h3><p>Blood pressure, cholesterol and diabetes screening in minutes.</p></article>
+      <article class="card reveal"><span class="ic">💬</span><h3>Medicine reviews</h3><p>One-to-one consultations to simplify and optimise your routine.</p></article>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-card reveal">
+      <h2>A friendly face behind the counter</h2>
+      <p>After a decade in hospital and community pharmacy, I opened my practice to give people more time, clearer answers, and genuine care. No rushed counters — just honest advice and a pharmacist who remembers your name.</p>
+      <ul class="ticks">
+        <li>Confidential, judgement-free consultations</li>
+        <li>Medication management for chronic conditions</li>
+        <li>Home delivery for those who need it</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- HOURS -->
+  <section class="hours" id="hours">
+    <h2 class="reveal">Opening hours</h2>
+    <div class="hours-grid reveal">
+      <div><span>Mon — Fri</span><b>8:30 — 19:00</b></div>
+      <div><span>Saturday</span><b>9:00 — 17:00</b></div>
+      <div><span>Sunday</span><b>10:00 — 14:00</b></div>
+      <div class="open" id="openNow"><span>Right now</span><b>—</b></div>
+    </div>
+  </section>
+
+  <!-- BOOK -->
+  <section class="book" id="book">
+    <h2 class="reveal">Let's keep you well</h2>
+    <p class="reveal">Book a free 15-minute consultation, or just drop by.</p>
+    <a href="mailto:hello@mayarx.health" class="btn primary big reveal">hello@mayarx.health</a>
+    <p class="addr reveal">📍 24 Linden Ave · ☎ (555) 014-2200</p>
+  </section>
+
+  <footer class="foot">© 2026 Maya Hassan Pharmacy · Always read the label.</footer>
+  <script src="script.js"></script>
+</body>
+</html>
