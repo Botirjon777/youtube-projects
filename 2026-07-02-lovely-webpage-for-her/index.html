@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For You 💖</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Floating hearts get injected here by JS -->
+  <div class="hearts" id="hearts" aria-hidden="true"></div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <p class="hello">Hey my love,</p>
+    <h1 class="name" id="name">Emma</h1>
+    <p class="typed"><span id="typed"></span><span class="caret">|</span></p>
+    <a href="#reasons" class="scroll-hint">scroll down ♡</a>
+  </header>
+
+  <!-- REASONS -->
+  <section class="reasons" id="reasons">
+    <h2>Reasons I love you</h2>
+    <p class="sub">tap a card ♡</p>
+    <div class="cards" id="cards"><!-- cards injected by JS --></div>
+  </section>
+
+  <!-- COUNTER -->
+  <section class="counter">
+    <h2>We've been together for</h2>
+    <div class="count" id="count">
+      <div class="unit"><span id="days">0</span><small>days</small></div>
+      <div class="unit"><span id="hours">0</span><small>hours</small></div>
+      <div class="unit"><span id="mins">0</span><small>minutes</small></div>
+      <div class="unit"><span id="secs">0</span><small>seconds</small></div>
+    </div>
+    <p class="sub">…and counting 💞</p>
+  </section>
+
+  <!-- SURPRISE -->
+  <section class="surprise">
+    <button class="surprise-btn" id="surpriseBtn">Open your surprise 🎁</button>
+    <div class="note" id="note" hidden>
+      <p>You make ordinary days feel like the best days.</p>
+      <p>Thank you for being you. I'd choose you in every version of forever. 💖</p>
+      <p class="sig">— always yours</p>
+    </div>
+  </section>
+
+  <footer>made with 💖 and a little bit of code</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
