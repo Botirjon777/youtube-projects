@@ -222,43 +222,40 @@ const thor = {
 };
 
 /* =========================================================
-   SPIDER-MAN — smooth classic web, eased to the cursor
+   SPIDER-MAN — web shoots from your cursor to nearby anchors
+   (original anchor version, lightly eased so it's smoother)
    ========================================================= */
 const spiderman = {
-  ex: 0, ey: 0, jitter: [],
+  anchors: [], ex: 0, ey: 0,
   init() {
+    this.anchors = Array.from({ length: 16 }, () => ({ x: Math.random() * W, y: Math.random() * H }));
     this.ex = W / 2; this.ey = H / 2;
-    this.jitter = Array.from({ length: 10 }, () => 0.85 + Math.random() * 0.25);
   },
   frame() {
     ctx.clearRect(0, 0, W, H);
-    this.ex += (mouse.x - this.ex) * 0.18; this.ey += (mouse.y - this.ey) * 0.18;
-    const cx = this.ex, cy = this.ey, N = 10, L = Math.min(W, H) * 0.42;
-    const spokes = [];
-    for (let i = 0; i < N; i++) spokes.push({ a: (i / N) * Math.PI * 2 - Math.PI / 2, len: L * this.jitter[i] });
-
+    // ease the web centre toward the cursor → smoother, no jitter
+    this.ex += (mouse.x - this.ex) * 0.16; this.ey += (mouse.y - this.ey) * 0.16;
+    const cx = this.ex, cy = this.ey;
+    // nearest anchors, then sorted by angle so the rings read cleanly
+    const near = this.anchors
+      .map((a) => ({ a, d: Math.hypot(a.x - cx, a.y - cy) }))
+      .sort((p, q) => p.d - q.d).slice(0, 8).map((o) => o.a)
+      .sort((p, q) => Math.atan2(p.y - cy, p.x - cx) - Math.atan2(q.y - cy, q.x - cx));
     // radial strands
-    ctx.strokeStyle = "rgba(255,255,255,0.82)"; ctx.lineWidth = 1.3 * DPR;
-    for (const s of spokes) {
-      ctx.beginPath(); ctx.moveTo(cx, cy);
-      ctx.lineTo(cx + Math.cos(s.a) * s.len, cy + Math.sin(s.a) * s.len); ctx.stroke();
-    }
-    // concentric rings with sagging curves between spokes
+    ctx.strokeStyle = "rgba(255,255,255,0.85)"; ctx.lineWidth = 1.3 * DPR;
+    near.forEach((a) => { ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(a.x, a.y); ctx.stroke(); });
+    // concentric rings between strands
     ctx.strokeStyle = "rgba(210,230,255,0.5)";
-    for (let ring = 1; ring <= 6; ring++) {
-      const tr = ring / 7;
+    for (let ring = 1; ring <= 4; ring++) {
+      const t = ring / 4.4;
       ctx.beginPath();
-      for (let i = 0; i <= N; i++) {
-        const p = spokes[i % N], r = p.len * tr;
-        const x = cx + Math.cos(p.a) * r, y = cy + Math.sin(p.a) * r;
-        if (i === 0) { ctx.moveTo(x, y); continue; }
-        const pp = spokes[(i - 1) % N], rr = pp.len * tr;
-        const x0 = cx + Math.cos(pp.a) * rr, y0 = cy + Math.sin(pp.a) * rr;
-        const mx = (x0 + x) / 2, my = (y0 + y) / 2, sag = 0.86;
-        ctx.quadraticCurveTo(cx + (mx - cx) * sag, cy + (my - cy) * sag, x, y);
-      }
-      ctx.stroke();
+      near.forEach((a, i) => {
+        const x = cx + (a.x - cx) * t, y = cy + (a.y - cy) * t;
+        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      });
+      ctx.closePath(); ctx.stroke();
     }
+    // spider node
     ctx.fillStyle = "#e62429"; ctx.beginPath(); ctx.arc(cx, cy, 5 * DPR, 0, 7); ctx.fill();
     ctx.fillStyle = "#1a55ff"; ctx.beginPath(); ctx.arc(cx, cy, 2 * DPR, 0, 7); ctx.fill();
   },
