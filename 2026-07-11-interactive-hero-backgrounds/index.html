@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive Hero Backgrounds</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Dancing+Script:wght@700&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-theme="tech">
+  <!-- the animated background -->
+  <canvas id="bg"></canvas>
+
+  <!-- theme switcher -->
+  <nav class="switcher" id="switcher">
+    <button data-theme="tech" class="active">🖥️ Tech</button>
+    <button data-theme="anime">🌸 Anime</button>
+    <button data-theme="gaming">🎮 Gaming</button>
+    <button data-theme="water">🌊 Water</button>
+    <button data-theme="cute">💗 Cute</button>
+  </nav>
+
+  <!-- hero content (parallax follows the mouse) -->
+  <main class="hero" id="hero">
+    <p class="kicker" id="kicker">move your mouse ✨</p>
+    <h1 id="title">Interactive Heroes</h1>
+    <p class="sub" id="sub">five mouse-reactive backgrounds · pure canvas, zero libraries</p>
+  </main>
+
+  <footer>switch themes ↑ · record while you move the mouse 🎥</footer>
+  <script src="script.js"></script>
+</body>
+</html>

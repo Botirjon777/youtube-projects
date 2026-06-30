@@ -1,0 +1,112 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body { height: 100%; overflow: hidden; }
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  color: #fff;
+  position: relative;
+  transition: background 0.6s ease;
+}
+
+/* per-theme page background (canvas draws transparently on top) */
+body[data-theme="tech"]   { background: radial-gradient(120% 120% at 50% 0%, #0e1b2e, #05070d 70%); }
+body[data-theme="anime"]  { background: linear-gradient(180deg, #ffd6e8 0%, #c9e7ff 55%, #fff3f8 100%); color: #5a2a45; }
+body[data-theme="gaming"] { background: linear-gradient(180deg, #1a0533 0%, #2b0a4a 45%, #ff2e88 110%); }
+body[data-theme="water"]  { background: linear-gradient(180deg, #013a63 0%, #02659e 50%, #16a6c9 100%); }
+body[data-theme="cute"]   { background: linear-gradient(180deg, #fdeaff 0%, #e6e6ff 50%, #d9fbff 100%); color: #5a2a55; }
+
+#bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 0;
+}
+
+/* ---------- Switcher ---------- */
+.switcher {
+  position: fixed;
+  top: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  gap: .4rem;
+  padding: .4rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .12);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, .25);
+}
+.switcher button {
+  font: inherit;
+  font-weight: 600;
+  font-size: .85rem;
+  color: inherit;
+  background: transparent;
+  border: none;
+  border-radius: 999px;
+  padding: .5rem .9rem;
+  cursor: pointer;
+  opacity: .7;
+  transition: opacity .2s, background .2s, transform .15s;
+}
+.switcher button:hover { opacity: 1; transform: translateY(-1px); }
+.switcher button.active { opacity: 1; background: rgba(255, 255, 255, .9); color: #111; }
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: .75rem;
+  padding: 1rem;
+  pointer-events: none;       /* let the mouse reach the canvas */
+  will-change: transform;
+}
+.kicker {
+  text-transform: uppercase;
+  letter-spacing: .25em;
+  font-size: .8rem;
+  opacity: .85;
+  font-family: "JetBrains Mono", monospace;
+}
+h1 {
+  font-size: clamp(2.5rem, 9vw, 6.5rem);
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: .95;
+  text-shadow: 0 10px 40px rgba(0, 0, 0, .35);
+}
+.sub { font-size: clamp(.95rem, 2.5vw, 1.2rem); opacity: .9; max-width: 36ch; }
+
+/* theme-specific title flavor */
+body[data-theme="anime"] h1 { font-family: "Dancing Script", cursive; font-weight: 700; }
+body[data-theme="cute"]  h1 { font-family: "Dancing Script", cursive; font-weight: 700; }
+body[data-theme="gaming"] h1 {
+  font-family: "JetBrains Mono", monospace;
+  text-shadow: 0 0 18px #ff2e88, 0 0 38px #7a2bff;
+}
+body[data-theme="tech"] h1 { text-shadow: 0 0 24px rgba(88, 166, 255, .45); }
+
+footer {
+  position: fixed;
+  bottom: 1rem;
+  left: 0; right: 0;
+  text-align: center;
+  z-index: 2;
+  font-size: .78rem;
+  opacity: .6;
+  font-family: "JetBrains Mono", monospace;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body { transition: none; }
+}
