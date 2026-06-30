@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Debounce vs Throttle — visualized</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Debounce <span class="vs">vs</span> Throttle</h1>
+    <p class="tag">Same events. Three very different handlers. Move your mouse below.</p>
+  </header>
+
+  <!-- the trigger -->
+  <div class="pad" id="pad">
+    <span>🖱️ move your mouse here &nbsp;·&nbsp; ⌨️ or type below</span>
+    <input id="search" type="text" placeholder="type to search…" />
+  </div>
+
+  <!-- controls -->
+  <div class="controls">
+    <label>wait / interval
+      <input id="wait" type="range" min="100" max="1000" step="50" value="400" />
+      <output id="waitOut">400ms</output>
+    </label>
+    <button class="btn" id="reset">Reset counts</button>
+  </div>
+
+  <!-- the three lanes -->
+  <main class="lanes">
+    <section class="lane raw">
+      <div class="lane-head"><b>RAW</b><code>handler() // every event</code><span class="count" id="rawCount">0</span></div>
+      <div class="timeline" id="rawLine"></div>
+      <p class="desc">Fires on <b>every</b> event. Hundreds of times. This is what kills performance.</p>
+    </section>
+
+    <section class="lane throttle">
+      <div class="lane-head"><b>THROTTLE</b><code>at most once per interval</code><span class="count" id="thCount">0</span></div>
+      <div class="timeline" id="thLine"></div>
+      <p class="desc">A <b>steady heartbeat</b> — runs regularly while you move. Great for scroll & resize.</p>
+    </section>
+
+    <section class="lane debounce">
+      <div class="lane-head"><b>DEBOUNCE</b><code>once, after you stop</code><span class="count" id="dbCount">0</span></div>
+      <div class="timeline" id="dbLine"></div>
+      <p class="desc">Waits for <b>quiet</b>, then fires once. Perfect for search-as-you-type & autosave.</p>
+    </section>
+  </main>
+
+  <section class="why">
+    <h2>When to use which</h2>
+    <ul>
+      <li><b>Debounce</b> → search boxes, autosave, validating a field, resize-then-recalculate. <i>"Do it once the user is done."</i></li>
+      <li><b>Throttle</b> → scroll position, mousemove tracking, rate-limiting clicks, infinite scroll. <i>"Do it regularly, but not too often."</i></li>
+    </ul>
+  </section>
+
+  <footer>Debounce vs Throttle · count the dots while you move 🎥</footer>
+  <script src="script.js"></script>
+</body>
+</html>

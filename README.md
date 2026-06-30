@@ -29,6 +29,10 @@ YYYY-MM-DD-slug/
 |--------------|---------|--------|--------|
 | 2026-07-02 | Lovely webpage for her | 💖 Love | 🟢 Built |
 | 2026-07-04 | "Will you go on a date?" (No runs away + countdown) | 💖 Love | 🟢 Built |
+| 2026-07-07 | Jank Lab — transform vs left (you've been animating wrong) | ⚡ Performance | 🟢 Built |
+| 2026-07-09 | Debounce vs Throttle — visualized | 🧩 Explainer | 🟢 Built |
+
+See **[VIRAL-STRATEGY.md](VIRAL-STRATEGY.md)** for what's working and the idea backlog.
 
 ## Tech choices
 

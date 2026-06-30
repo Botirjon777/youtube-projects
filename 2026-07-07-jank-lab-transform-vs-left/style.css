@@ -1,0 +1,113 @@
+:root {
+  --bg: #0d1117;
+  --panel: #161b22;
+  --line: #232b36;
+  --text: #e6edf3;
+  --muted: #8b949e;
+  --green: #3fb950;
+  --red: #f85149;
+  --accent: #58a6ff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  padding: 2rem 1.25rem 0;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+code { font-family: "JetBrains Mono", monospace; }
+
+header { text-align: center; margin-bottom: 1.5rem; }
+h1 { font-size: clamp(1.8rem, 5vw, 3rem); font-weight: 800; letter-spacing: -.02em; }
+.wrong { color: var(--red); text-decoration: underline wavy var(--red); }
+.tag { color: var(--muted); margin-top: .5rem; }
+
+/* ---------- FPS meter ---------- */
+.meter {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.fps { display: flex; flex-direction: column; min-width: 90px; }
+.fps span { font-size: 2.2rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+.fps small { color: var(--muted); font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; }
+.bar { flex: 1; height: 12px; background: #21262d; border-radius: 99px; overflow: hidden; }
+.bar i { display: block; height: 100%; width: 100%; background: linear-gradient(90deg, var(--red), #d29922, var(--green)); transform-origin: left; transition: transform .1s linear; }
+
+/* ---------- Lanes ---------- */
+.lanes { display: grid; gap: 1rem; }
+.lane { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 1rem 1.25rem; }
+.lane-head { display: flex; align-items: center; gap: .75rem; margin-bottom: .9rem; flex-wrap: wrap; }
+.lane-head code { font-size: .95rem; color: var(--accent); }
+.badge { font-size: .68rem; text-transform: uppercase; letter-spacing: .06em; color: var(--red); border: 1px solid var(--red); border-radius: 99px; padding: .15rem .6rem; }
+.badge.ok { color: var(--green); border-color: var(--green); }
+
+.track { position: relative; height: 56px; background: #0b0f14; border-radius: 10px; overflow: hidden; }
+.box {
+  position: absolute;
+  top: 8px;
+  width: 80px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: .8rem;
+  color: #fff;
+}
+
+/* the SAME visual motion, two different mechanisms */
+.box-left {
+  left: 0;
+  background: var(--red);
+  animation: moveLeft 2s linear infinite alternate;
+}
+.box-transform {
+  left: 0;
+  background: var(--green);
+  will-change: transform;
+  animation: moveTransform 2s linear infinite alternate;
+}
+@keyframes moveLeft { to { left: calc(100% - 80px); } }
+@keyframes moveTransform { to { transform: translateX(var(--dx, 600px)); } }
+
+.paused .box { animation-play-state: paused; }
+
+/* ---------- Controls ---------- */
+.controls { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; margin: 1.5rem 0; }
+.btn {
+  font: inherit; font-weight: 600;
+  background: #21262d; color: var(--text);
+  border: 1px solid var(--line); border-radius: 10px;
+  padding: .7rem 1.2rem; cursor: pointer;
+  transition: transform .1s, background .15s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn.danger { background: var(--red); border-color: var(--red); color: #fff; }
+.btn.danger.active { background: #b62324; }
+.note { color: var(--muted); font-size: .9rem; }
+
+/* ---------- Why ---------- */
+.why { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 1.25rem 1.5rem; }
+.why h2 { font-size: 1.2rem; margin-bottom: .6rem; }
+.why ul { padding-left: 1.1rem; display: grid; gap: .55rem; color: var(--muted); }
+.why b { color: var(--text); }
+.why code { color: var(--accent); }
+
+footer { text-align: center; color: var(--muted); font-size: .82rem; padding: 2rem 1rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .box { animation: none !important; }
+}

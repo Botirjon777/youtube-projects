@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jank Lab — transform vs left</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>You've been animating <span class="wrong">wrong</span>.</h1>
+    <p class="tag">Both boxes move the same way. Only one survives a busy main thread.</p>
+  </header>
+
+  <!-- live FPS meter -->
+  <div class="meter">
+    <div class="fps"><span id="fps">60</span><small>FPS (main thread)</small></div>
+    <div class="bar"><i id="fpsBar"></i></div>
+  </div>
+
+  <!-- the race -->
+  <main class="lanes">
+    <section class="lane bad">
+      <div class="lane-head">
+        <code>animation: left</code>
+        <span class="badge">layout + paint every frame</span>
+      </div>
+      <div class="track"><div class="box box-left">left</div></div>
+    </section>
+
+    <section class="lane good">
+      <div class="lane-head">
+        <code>animation: transform</code>
+        <span class="badge ok">composited — own thread</span>
+      </div>
+      <div class="track"><div class="box box-transform">transform</div></div>
+    </section>
+  </main>
+
+  <!-- controls -->
+  <div class="controls">
+    <button id="blockBtn" class="btn danger">🔥 Block the main thread</button>
+    <button id="stopBtn" class="btn">Stop</button>
+    <span class="note" id="note">Click “Block” and watch the left box choke while transform glides.</span>
+  </div>
+
+  <section class="why">
+    <h2>Why?</h2>
+    <ul>
+      <li><b><code>left</code></b> changes the page <b>layout</b>, so the browser must recalculate positions, repaint, then composite — all on the <b>main thread</b>, every single frame.</li>
+      <li><b><code>transform</code></b> (and <code>opacity</code>) skip layout &amp; paint. They run on the <b>compositor thread</b>, so they keep animating even when JavaScript jams the main thread.</li>
+      <li>Rule of thumb: <b>animate only <code>transform</code> and <code>opacity</code></b>. Add <code>will-change: transform</code> to promote the layer.</li>
+    </ul>
+  </section>
+
+  <footer>Jank Lab · open the Performance tab and record while you click “Block” 🎥</footer>
+  <script src="script.js"></script>
+</body>
+</html>
