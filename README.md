@@ -28,6 +28,7 @@ YYYY-MM-DD-slug/
 | Publish date | Project | Pillar | Status |
 |--------------|---------|--------|--------|
 | 2026-07-02 | Lovely webpage for her | 💖 Love | 🟢 Built |
+| 2026-07-04 | "Will you go on a date?" (No runs away + countdown) | 💖 Love | 🟢 Built |
 
 ## Tech choices
 

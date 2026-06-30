@@ -1,0 +1,137 @@
+:root {
+  --pink: #ff6b9d;
+  --deep: #c81d6b;
+  --soft: #ffe3ee;
+  --cream: #fff5f8;
+  --ink: #4a2c3a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: "Poppins", system-ui, sans-serif;
+  color: var(--ink);
+  background: linear-gradient(160deg, var(--cream), var(--soft));
+  min-height: 100vh;
+  overflow-x: hidden;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(2.2rem, 7vw, 4rem);
+  color: var(--deep);
+  line-height: 1.05;
+  max-width: 14ch;
+  margin-inline: auto;
+}
+h2 {
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  color: var(--deep);
+}
+
+/* ---------- Steps ---------- */
+.step {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  min-height: 100vh;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  padding: 2rem 1.25rem;
+}
+.step.active { display: flex; animation: fade .6s ease; }
+@keyframes fade { from { opacity: 0; transform: translateY(12px); } }
+
+.emoji-bounce { font-size: 3.5rem; animation: bounce 1.6s ease-in-out infinite; }
+@keyframes bounce { 50% { transform: translateY(-12px); } }
+
+/* ---------- Buttons ---------- */
+.choices { position: relative; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+.btn {
+  font: inherit;
+  font-weight: 500;
+  border: none;
+  border-radius: 999px;
+  padding: .9rem 2rem;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+}
+.btn.yes {
+  color: #fff;
+  background: linear-gradient(135deg, var(--pink), var(--deep));
+  box-shadow: 0 12px 30px rgba(200, 29, 107, .35);
+}
+.btn.yes:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(200, 29, 107, .45); }
+.btn.wide { padding: 1rem 2.5rem; font-size: 1.05rem; }
+.btn.yes:disabled { opacity: .5; cursor: not-allowed; transform: none; box-shadow: none; }
+
+.btn.no {
+  color: var(--deep);
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(200, 29, 107, .12);
+}
+
+.hint { color: var(--pink); font-weight: 300; font-size: .95rem; min-height: 1.4em; }
+
+/* ---------- Plan step ---------- */
+.label { font-weight: 500; color: var(--deep); margin-top: .5rem; }
+.chips { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; max-width: 520px; }
+.chip {
+  font: inherit;
+  border: 2px solid transparent;
+  background: #fff;
+  border-radius: 999px;
+  padding: .6rem 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(200, 29, 107, .1);
+  transition: transform .15s, border-color .15s;
+}
+.chip:hover { transform: translateY(-2px); }
+.chip.selected { border-color: var(--pink); color: var(--deep); font-weight: 500; }
+
+.when { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+.when label { display: flex; flex-direction: column; gap: .35rem; font-size: .85rem; color: var(--deep); font-weight: 500; }
+.when input {
+  font: inherit;
+  border: 2px solid var(--soft);
+  border-radius: 14px;
+  padding: .6rem .8rem;
+  background: #fff;
+  color: var(--ink);
+}
+.when input:focus { outline: none; border-color: var(--pink); }
+
+/* ---------- Countdown ---------- */
+.summary { font-size: 1.1rem; max-width: 24ch; }
+.count { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; }
+.unit {
+  background: #fff;
+  border-radius: 18px;
+  padding: 1rem 1.1rem;
+  min-width: 78px;
+  box-shadow: 0 10px 30px rgba(200, 29, 107, .12);
+}
+.unit span { display: block; font-size: 2rem; font-weight: 600; color: var(--deep); }
+.unit small { color: var(--pink); text-transform: uppercase; letter-spacing: .08em; font-size: .6rem; }
+
+footer { position: relative; z-index: 1; padding: 2rem 1rem; color: var(--pink); font-size: .82rem; font-weight: 300; }
+
+/* ---------- Floating hearts ---------- */
+.hearts { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+.heart { position: absolute; bottom: -40px; animation: float linear forwards; opacity: 0; }
+@keyframes float {
+  0% { transform: translateY(0) scale(.6); opacity: 0; }
+  10% { opacity: .9; }
+  100% { transform: translateY(-110vh) scale(1.1); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

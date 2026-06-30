@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A little question… 💌</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="hearts" id="hearts" aria-hidden="true"></div>
+
+  <!-- STEP 1 — the question -->
+  <section class="step active" id="step-ask">
+    <div class="emoji-bounce">🥺</div>
+    <h1>Will you go on a date with me?</h1>
+    <div class="choices">
+      <button class="btn yes" id="yesBtn">Yes 💖</button>
+      <button class="btn no" id="noBtn">No</button>
+    </div>
+    <p class="hint" id="noHint"></p>
+  </section>
+
+  <!-- STEP 2 — plan the date -->
+  <section class="step" id="step-plan">
+    <h2>Yay! Let's plan it 💞</h2>
+
+    <p class="label">Pick what we'll eat</p>
+    <div class="chips" id="foodChips">
+      <button class="chip" data-food="🍕 Pizza">🍕 Pizza</button>
+      <button class="chip" data-food="🍣 Sushi">🍣 Sushi</button>
+      <button class="chip" data-food="🍔 Burgers">🍔 Burgers</button>
+      <button class="chip" data-food="🍝 Pasta">🍝 Pasta</button>
+      <button class="chip" data-food="🌮 Tacos">🌮 Tacos</button>
+      <button class="chip" data-food="🍦 Ice cream">🍦 Ice cream</button>
+    </div>
+
+    <div class="when">
+      <label>Which day?
+        <input type="date" id="dayInput" />
+      </label>
+      <label>What time?
+        <input type="time" id="timeInput" value="19:00" />
+      </label>
+    </div>
+
+    <button class="btn yes wide" id="confirmBtn" disabled>Confirm our date 💌</button>
+    <p class="hint" id="planHint">pick a food and a day ♡</p>
+  </section>
+
+  <!-- STEP 3 — it's a date + countdown -->
+  <section class="step" id="step-done">
+    <div class="emoji-bounce">🎉</div>
+    <h2>It's a date!</h2>
+    <p class="summary" id="summary"></p>
+
+    <p class="label">I'll be counting down…</p>
+    <div class="count" id="count">
+      <div class="unit"><span id="days">0</span><small>days</small></div>
+      <div class="unit"><span id="hours">00</span><small>hours</small></div>
+      <div class="unit"><span id="mins">00</span><small>mins</small></div>
+      <div class="unit"><span id="secs">00</span><small>secs</small></div>
+    </div>
+    <p class="hint" id="doneHint">…until I get to see you 💖</p>
+  </section>
+
+  <footer>made with 💖 and a little bit of code</footer>
+  <script src="script.js"></script>
+</body>
+</html>
