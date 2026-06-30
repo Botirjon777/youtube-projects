@@ -1,0 +1,54 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; overflow: hidden; }
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  color: #fff; position: relative; transition: background 0.6s ease;
+}
+
+body[data-theme="interstellar"] { background: #01010a; }
+body[data-theme="inception"]    { background: #0c0a06; }
+body[data-theme="bladerunner"]  { background: linear-gradient(180deg, #0a0618 0%, #06040c 100%); }
+
+#bg { position: fixed; inset: 0; width: 100%; height: 100%; display: block; z-index: 0; }
+
+.switcher {
+  position: fixed; top: 1.25rem; left: 50%; transform: translateX(-50%);
+  z-index: 3; display: flex; flex-wrap: wrap; justify-content: center;
+  max-width: min(94vw, 620px); gap: .3rem; padding: .4rem;
+  border-radius: 22px; background: rgba(255, 255, 255, .12);
+  backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, .25);
+}
+.switcher button {
+  font: inherit; font-weight: 600; font-size: .85rem; color: #fff;
+  background: transparent; border: none; border-radius: 999px;
+  padding: .5rem .9rem; cursor: pointer; opacity: .7;
+  transition: opacity .2s, background .2s, transform .15s;
+}
+.switcher button:hover { opacity: 1; transform: translateY(-1px); }
+.switcher button.active { opacity: 1; background: rgba(255, 255, 255, .92); color: #111; }
+
+.hero {
+  position: relative; z-index: 2; height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; gap: .75rem; padding: 1rem;
+  pointer-events: none; will-change: transform;
+}
+.kicker { text-transform: uppercase; letter-spacing: .25em; font-size: .8rem; opacity: .85; font-family: "JetBrains Mono", monospace; }
+h1 {
+  font-family: "JetBrains Mono", monospace;
+  font-size: clamp(2rem, 8vw, 6rem); font-weight: 800;
+  letter-spacing: .04em; line-height: .95;
+}
+.sub { font-size: clamp(.95rem, 2.5vw, 1.2rem); opacity: .9; max-width: 40ch; }
+
+body[data-theme="interstellar"] h1 { color: #ffdca8; text-shadow: 0 0 22px #ffb347, 0 0 55px #d2691e; }
+body[data-theme="inception"]    h1 { color: #e8c98a; text-shadow: 0 0 20px rgba(214,184,122,.5); }
+body[data-theme="bladerunner"]  h1 { color: #ff4fa3; text-shadow: 0 0 20px #19d3ff, 0 0 50px #ff2e88; }
+
+footer {
+  position: fixed; bottom: 1rem; left: 0; right: 0; text-align: center;
+  z-index: 2; font-size: .78rem; opacity: .6; font-family: "JetBrains Mono", monospace;
+}
+
+@media (prefers-reduced-motion: reduce) { body { transition: none; } }

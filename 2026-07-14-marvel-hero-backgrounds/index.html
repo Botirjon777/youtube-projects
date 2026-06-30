@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marvel Hero Backgrounds</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-theme="ironman">
+  <canvas id="bg"></canvas>
+
+  <nav class="switcher" id="switcher">
+    <button data-theme="ironman" class="active">🔴 Iron Man</button>
+    <button data-theme="thor">⚡ Thor</button>
+    <button data-theme="spiderman">🕷️ Spider-Man</button>
+    <button data-theme="antman">🐜 Ant-Man</button>
+  </nav>
+
+  <main class="hero" id="hero">
+    <p class="kicker" id="kicker">move your mouse ✨</p>
+    <h1 id="title">IRON MAN</h1>
+    <p class="sub" id="sub">arc-reactor HUD that locks onto your cursor</p>
+  </main>
+
+  <footer>Marvel hero backgrounds · pure canvas, zero libraries 🎥</footer>
+  <script src="script.js"></script>
+</body>
+</html>

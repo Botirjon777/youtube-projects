@@ -32,8 +32,21 @@ YYYY-MM-DD-slug/
 | 2026-07-07 | Jank Lab — transform vs left (you've been animating wrong) | ⚡ Performance | 🟢 Built |
 | 2026-07-09 | Debounce vs Throttle — visualized | 🧩 Explainer | 🟢 Built |
 | 2026-07-11 | Interactive hero backgrounds (12 mouse-reactive themes) | ✨ Creative | 🟢 Built |
+| 2026-07-14 | Marvel hero backgrounds (Iron Man · Thor · Spider-Man · Ant-Man) | 🦸 Fan pack | 🟢 Built |
+| 2026-07-16 | DC hero backgrounds (Batman · Superman · Flash · Green Lantern) | 🦇 Fan pack | 🟢 Built |
+| 2026-07-18 | Sci-fi movie backgrounds (Interstellar · Inception · Blade Runner) | 🎞️ Fan pack | 🟢 Built |
 
 See **[VIRAL-STRATEGY.md](VIRAL-STRATEGY.md)** for what's working and the idea backlog.
+
+## 🎒 Themed background packs (one pack = one video)
+
+Each "pack" bundles 3–4 mouse-reactive `<canvas>` backgrounds around a theme, on the same reusable engine. Great for episodic, comment-driven series ("who's next?").
+
+- **Marvel Pt.1** ✅ → Pt.2 (Hulk, Doctor Strange, Captain America, Black Panther)
+- **DC** ✅ → Pt.2 (Wonder Woman, Aquaman, Joker, Cyborg)
+- **Sci-Fi movies** ✅ → Tron, Dune, 2001, Tenet, Avatar
+- **By vibe** (planned): For Men · For Girls · For Anime · For Creativity
+- **Master showcase:** the 12-theme [interactive hero backgrounds](2026-07-11-interactive-hero-backgrounds/)
 
 ## Tech choices
 

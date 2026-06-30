@@ -1,0 +1,58 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; overflow: hidden; }
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  color: #fff;
+  position: relative;
+  transition: background 0.6s ease;
+}
+
+body[data-theme="ironman"]   { background: radial-gradient(120% 120% at 50% 50%, #2a0d0d, #0a0608 75%); }
+body[data-theme="thor"]      { background: linear-gradient(180deg, #0a1428 0%, #05080f 100%); }
+body[data-theme="spiderman"] { background: radial-gradient(120% 120% at 50% 45%, #1a0a14, #06040a 78%); }
+body[data-theme="antman"]    { background: radial-gradient(120% 120% at 50% 50%, #1a0033, #05010f 80%); }
+
+#bg { position: fixed; inset: 0; width: 100%; height: 100%; display: block; z-index: 0; }
+
+.switcher {
+  position: fixed; top: 1.25rem; left: 50%; transform: translateX(-50%);
+  z-index: 3; display: flex; flex-wrap: wrap; justify-content: center;
+  max-width: min(94vw, 640px); gap: .3rem; padding: .4rem;
+  border-radius: 22px; background: rgba(255, 255, 255, .12);
+  backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, .25);
+}
+.switcher button {
+  font: inherit; font-weight: 600; font-size: .85rem; color: #fff;
+  background: transparent; border: none; border-radius: 999px;
+  padding: .5rem .9rem; cursor: pointer; opacity: .7;
+  transition: opacity .2s, background .2s, transform .15s;
+}
+.switcher button:hover { opacity: 1; transform: translateY(-1px); }
+.switcher button.active { opacity: 1; background: rgba(255, 255, 255, .92); color: #111; }
+
+.hero {
+  position: relative; z-index: 2; height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; gap: .75rem; padding: 1rem;
+  pointer-events: none; will-change: transform;
+}
+.kicker { text-transform: uppercase; letter-spacing: .25em; font-size: .8rem; opacity: .85; font-family: "JetBrains Mono", monospace; }
+h1 {
+  font-family: "JetBrains Mono", monospace;
+  font-size: clamp(2.4rem, 9vw, 6.5rem); font-weight: 800;
+  letter-spacing: .02em; line-height: .95;
+}
+.sub { font-size: clamp(.95rem, 2.5vw, 1.2rem); opacity: .9; max-width: 38ch; }
+
+body[data-theme="ironman"]   h1 { color: #ffd76a; text-shadow: 0 0 20px #ff7b1a, 0 0 50px #79e6ff; }
+body[data-theme="thor"]      h1 { color: #cfe3ff; text-shadow: 0 0 20px #6cf, 0 0 50px #36f; }
+body[data-theme="spiderman"] h1 { color: #ff3b3b; text-shadow: 0 0 20px #e62429, 0 0 50px #1a55ff; }
+body[data-theme="antman"]    h1 { color: #ff5bd6; text-shadow: 0 0 20px #b14bff, 0 0 50px #2bd6ff; }
+
+footer {
+  position: fixed; bottom: 1rem; left: 0; right: 0; text-align: center;
+  z-index: 2; font-size: .78rem; opacity: .6; font-family: "JetBrains Mono", monospace;
+}
+
+@media (prefers-reduced-motion: reduce) { body { transition: none; } }
