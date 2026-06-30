@@ -2,12 +2,12 @@
 
 > Pillar: **Creative** · Publish: **2026-07-11**
 
-Five mouse-reactive hero backgrounds in one page, switchable with a pill bar. Pure `<canvas>`, **zero libraries**. Move the mouse and everything responds — the perfect "wow moment" reel.
+**Twelve** mouse-reactive hero backgrounds in one page, switchable with a pill bar. Pure `<canvas>`, **zero libraries**. Move the mouse and everything responds — the perfect "wow moment" reel.
 
 ## ▶️ Run it
 Open `index.html`. Move your mouse. Click the pills to switch themes.
 
-## 🎨 The five themes
+## 🎨 The twelve themes
 | Theme | Reacts to mouse by… |
 |-------|---------------------|
 | 🖥️ **Tech** | particle constellation; nodes link to each other and to your cursor, which gently pulls them |
@@ -15,6 +15,13 @@ Open `index.html`. Move your mouse. Click the pills to switch themes.
 | 🎮 **Gaming** | synthwave perspective grid + sun; the **horizon/vanishing point steers** with the mouse |
 | 🌊 **Water** | fast moves spawn **expanding ripples**; bubbles rise underneath |
 | 💗 **Cute** | pastel aurora blobs (additive blend) with a **gooey glow that follows the cursor** + twinkling sparkles |
+| 🌌 **Galaxy** | 3D starfield that **warps out of wherever you point** (classic hyperspace streaks) |
+| 💚 **Matrix** | digital rain; the **column under your cursor burns bright** white |
+| 🔥 **Fire** | rising embers with additive glow; your **cursor is a torch** spitting flames |
+| ⚡ **Lightning** | jagged plasma bolts **arc to the cursor** every few frames (midpoint-displacement) |
+| 🐠 **Boids** | a flocking swarm (alignment/cohesion/separation) that **chases your cursor** |
+| ❄️ **Snow** | snowfall whose **wind direction follows your mouse** |
+| 🌀 **Vortex** | particles **spiral into the cursor** like an event horizon |
 
 The hero text also **parallaxes** opposite the cursor.
 

@@ -15,6 +15,13 @@ body[data-theme="anime"]  { background: linear-gradient(180deg, #ffd6e8 0%, #c9e
 body[data-theme="gaming"] { background: linear-gradient(180deg, #1a0533 0%, #2b0a4a 45%, #ff2e88 110%); }
 body[data-theme="water"]  { background: linear-gradient(180deg, #013a63 0%, #02659e 50%, #16a6c9 100%); }
 body[data-theme="cute"]   { background: linear-gradient(180deg, #fdeaff 0%, #e6e6ff 50%, #d9fbff 100%); color: #5a2a55; }
+body[data-theme="galaxy"] { background: radial-gradient(120% 120% at 50% 50%, #0a0a2e, #01010a 75%); }
+body[data-theme="matrix"] { background: #000; }
+body[data-theme="fire"]   { background: linear-gradient(180deg, #1b0600 0%, #000 80%); }
+body[data-theme="plasma"] { background: radial-gradient(120% 120% at 50% 40%, #100a2e, #02000a 80%); }
+body[data-theme="boids"]  { background: linear-gradient(180deg, #060b16, #02040a); }
+body[data-theme="snow"]   { background: linear-gradient(180deg, #1b2a4a 0%, #0a1326 100%); }
+body[data-theme="vortex"] { background: radial-gradient(120% 120% at 50% 50%, #1a0033, #000 80%); }
 
 #bg {
   position: fixed;
@@ -33,9 +40,12 @@ body[data-theme="cute"]   { background: linear-gradient(180deg, #fdeaff 0%, #e6e
   transform: translateX(-50%);
   z-index: 3;
   display: flex;
-  gap: .4rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: min(94vw, 760px);
+  gap: .3rem;
   padding: .4rem;
-  border-radius: 999px;
+  border-radius: 22px;
   background: rgba(255, 255, 255, .12);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, .25);
@@ -95,6 +105,11 @@ body[data-theme="gaming"] h1 {
   text-shadow: 0 0 18px #ff2e88, 0 0 38px #7a2bff;
 }
 body[data-theme="tech"] h1 { text-shadow: 0 0 24px rgba(88, 166, 255, .45); }
+body[data-theme="matrix"] h1 { font-family: "JetBrains Mono", monospace; color: #b9ffce; text-shadow: 0 0 18px #2cff77, 0 0 40px #0c3; }
+body[data-theme="fire"] h1 { text-shadow: 0 0 20px #ff7b1a, 0 0 44px #ff2e00; }
+body[data-theme="plasma"] h1 { text-shadow: 0 0 18px #6cf, 0 0 44px #36f; }
+body[data-theme="galaxy"] h1 { text-shadow: 0 0 22px rgba(150, 190, 255, .6); }
+body[data-theme="vortex"] h1 { text-shadow: 0 0 22px #c06bff, 0 0 44px #6b2bff; }
 
 footer {
   position: fixed;

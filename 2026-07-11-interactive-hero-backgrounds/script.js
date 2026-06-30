@@ -266,9 +266,252 @@ const cute = {
 };
 
 /* =========================================================
+   THEME: galaxy — starfield warp toward the cursor
+   ========================================================= */
+const galaxy = {
+  stars: [],
+  init() {
+    const n = Math.round((W * H) / (9000 * DPR));
+    this.stars = Array.from({ length: n }, () => this.make());
+  },
+  make() { return { x: rand(-W, W), y: rand(-H, H), z: rand(1, W), pz: 0 }; },
+  frame() {
+    ctx.fillStyle = "rgba(1,1,8,0.32)"; ctx.fillRect(0, 0, W, H); // motion-blur trails
+    ctx.globalCompositeOperation = "lighter";
+    const cx = mouse.x, cy = mouse.y, focal = W * 0.7;
+    for (const s of this.stars) {
+      s.pz = s.z;
+      s.z -= 9 * DPR;
+      if (s.z < 1) { Object.assign(s, this.make()); s.z = W; s.pz = W; continue; }
+      const sx = cx + (s.x / s.z) * focal, sy = cy + (s.y / s.z) * focal;
+      const px = cx + (s.x / s.pz) * focal, py = cy + (s.y / s.pz) * focal;
+      const k = 1 - s.z / W;
+      ctx.strokeStyle = `rgba(180,210,255,${k})`;
+      ctx.lineWidth = Math.max(0.5, k * 2.5 * DPR);
+      ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(sx, sy); ctx.stroke();
+    }
+    ctx.globalCompositeOperation = "source-over";
+  },
+};
+
+/* =========================================================
+   THEME: matrix — digital rain (cursor column glows)
+   ========================================================= */
+const matrix = {
+  cols: [], font: 16, chars: "アァカサタナハマヤラ0123456789ABCDEF$#%&",
+  init() {
+    this.font = 16 * DPR;
+    ctx.fillStyle = "#000"; ctx.fillRect(0, 0, W, H);
+    const n = Math.floor(W / this.font);
+    this.cols = Array.from({ length: n }, () => ({ y: rand(-H, 0), sp: rand(4, 13) * DPR }));
+  },
+  frame() {
+    ctx.fillStyle = "rgba(0,0,0,0.07)"; ctx.fillRect(0, 0, W, H); // trails
+    ctx.font = `${this.font}px "JetBrains Mono", monospace`;
+    const f = this.font, mcol = Math.floor(mouse.x / f);
+    for (let i = 0; i < this.cols.length; i++) {
+      const c = this.cols[i], x = i * f;
+      const ch = this.chars[(Math.random() * this.chars.length) | 0];
+      const near = Math.abs(i - mcol) < 3;
+      ctx.fillStyle = near ? "#eafff0" : "#33ff77";
+      ctx.fillText(ch, x, c.y);
+      if (c.y > H && Math.random() > 0.975) c.y = 0;
+      c.y += c.sp;
+    }
+  },
+};
+
+/* =========================================================
+   THEME: fire — embers rising (cursor is a torch)
+   ========================================================= */
+const fire = {
+  parts: [],
+  init() { this.parts = []; },
+  spawn(x, y, n) {
+    for (let k = 0; k < n; k++) this.parts.push({
+      x: x + rand(-10, 10) * DPR, y,
+      vx: rand(-0.4, 0.4) * DPR, vy: rand(-2.6, -1.1) * DPR,
+      life: 1, r: rand(6, 15) * DPR,
+    });
+  },
+  frame() {
+    ctx.clearRect(0, 0, W, H);
+    for (let x = 0; x < W; x += 40 * DPR) this.spawn(x, H + 8 * DPR, 1); // base flames
+    this.spawn(mouse.x, mouse.y, 3);                                     // torch at cursor
+    ctx.globalCompositeOperation = "lighter";
+    this.parts = this.parts.filter((p) => {
+      p.life -= 0.018;
+      if (p.life <= 0) return false;
+      p.x += p.vx; p.y += p.vy; p.vy -= 0.02 * DPR; p.vx *= 0.99;
+      const t = p.life;
+      ctx.fillStyle = `rgba(255,${(180 * t + 40) | 0},${(60 * t * t) | 0},${t * 0.5})`;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r * (1.4 - t), 0, 7); ctx.fill();
+      return true;
+    });
+    ctx.globalCompositeOperation = "source-over";
+  },
+};
+
+/* =========================================================
+   THEME: plasma — lightning bolts arc to the cursor
+   ========================================================= */
+const plasma = {
+  bolts: [], timer: 0,
+  init() { this.bolts = []; this.timer = 0; },
+  jagged(x1, y1, x2, y2) {
+    let pts = [[x1, y1], [x2, y2]];
+    for (let g = 0; g < 5; g++) {
+      const np = [];
+      for (let i = 0; i < pts.length - 1; i++) {
+        const a = pts[i], b = pts[i + 1];
+        const mx = (a[0] + b[0]) / 2 + rand(-1, 1) * (50 * DPR) / (g + 1);
+        const my = (a[1] + b[1]) / 2 + rand(-1, 1) * (50 * DPR) / (g + 1);
+        np.push(a, [mx, my]);
+      }
+      np.push(pts[pts.length - 1]);
+      pts = np;
+    }
+    return pts;
+  },
+  frame() {
+    ctx.fillStyle = "rgba(4,2,16,0.25)"; ctx.fillRect(0, 0, W, H);
+    if (--this.timer <= 0) {
+      const edges = [[rand(0, W), 0], [rand(0, W), H], [0, rand(0, H)], [W, rand(0, H)]];
+      const e = edges[(rand(0, 4)) | 0];
+      this.bolts.push({ pts: this.jagged(e[0], e[1], mouse.x, mouse.y), life: 1 });
+      this.timer = rand(6, 16);
+    }
+    ctx.globalCompositeOperation = "lighter";
+    ctx.lineCap = "round"; ctx.shadowColor = "#6cf";
+    this.bolts = this.bolts.filter((b) => {
+      b.life -= 0.05;
+      if (b.life <= 0) return false;
+      ctx.strokeStyle = `rgba(160,205,255,${b.life})`;
+      ctx.lineWidth = 2 * DPR; ctx.shadowBlur = 16 * DPR;
+      ctx.beginPath();
+      ctx.moveTo(b.pts[0][0], b.pts[0][1]);
+      for (let i = 1; i < b.pts.length; i++) ctx.lineTo(b.pts[i][0], b.pts[i][1]);
+      ctx.stroke();
+      return true;
+    });
+    ctx.shadowBlur = 0;
+    ctx.globalCompositeOperation = "source-over";
+  },
+};
+
+/* =========================================================
+   THEME: boids — flocking swarm that follows the cursor
+   ========================================================= */
+const boids = {
+  b: [],
+  init() {
+    const n = Math.min(120, Math.round((W * H) / (45000 * DPR)));
+    this.b = Array.from({ length: n }, () => ({
+      x: Math.random() * W, y: Math.random() * H,
+      vx: rand(-1, 1) * DPR, vy: rand(-1, 1) * DPR,
+    }));
+  },
+  frame() {
+    ctx.clearRect(0, 0, W, H);
+    const b = this.b, R = 64 * DPR, maxV = 2.6 * DPR;
+    for (let i = 0; i < b.length; i++) {
+      const p = b[i];
+      let ax = 0, ay = 0, cx = 0, cy = 0, sx = 0, sy = 0, count = 0;
+      for (let j = 0; j < b.length; j++) {
+        if (i === j) continue;
+        const dx = b[j].x - p.x, dy = b[j].y - p.y, d = Math.hypot(dx, dy);
+        if (d < R) {
+          ax += b[j].vx; ay += b[j].vy; cx += b[j].x; cy += b[j].y;
+          if (d < 26 * DPR && d > 0) { sx -= dx / d; sy -= dy / d; }
+          count++;
+        }
+      }
+      if (count) {
+        p.vx += (ax / count) * 0.02 + (cx / count - p.x) * 0.0008 + sx * 0.07;
+        p.vy += (ay / count) * 0.02 + (cy / count - p.y) * 0.0008 + sy * 0.07;
+      }
+      const mdx = mouse.x - p.x, mdy = mouse.y - p.y, md = Math.hypot(mdx, mdy) || 1;
+      p.vx += (mdx / md) * 0.045; p.vy += (mdy / md) * 0.045;
+      const sp = Math.hypot(p.vx, p.vy);
+      if (sp > maxV) { p.vx = p.vx / sp * maxV; p.vy = p.vy / sp * maxV; }
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0) p.x += W; if (p.x > W) p.x -= W;
+      if (p.y < 0) p.y += H; if (p.y > H) p.y -= H;
+      ctx.save();
+      ctx.translate(p.x, p.y); ctx.rotate(Math.atan2(p.vy, p.vx));
+      ctx.fillStyle = "#7fe9ff";
+      ctx.beginPath(); ctx.moveTo(7 * DPR, 0); ctx.lineTo(-5 * DPR, 4 * DPR); ctx.lineTo(-5 * DPR, -4 * DPR);
+      ctx.closePath(); ctx.fill();
+      ctx.restore();
+    }
+  },
+};
+
+/* =========================================================
+   THEME: snow — snowfall, wind follows the cursor
+   ========================================================= */
+const snow = {
+  flakes: [],
+  init() {
+    const n = Math.round((W * H) / (16000 * DPR));
+    this.flakes = Array.from({ length: n }, () => this.make(true));
+  },
+  make(spread) {
+    return {
+      x: Math.random() * W, y: spread ? Math.random() * H : -10 * DPR,
+      r: rand(1.5, 4.5) * DPR, sp: rand(0.5, 1.7) * DPR,
+      sway: rand(0, 7), swSpd: rand(0.005, 0.02), a: rand(0.4, 1),
+    };
+  },
+  frame() {
+    ctx.clearRect(0, 0, W, H);
+    const wind = (mouse.x / W - 0.5) * 3 * DPR;
+    ctx.fillStyle = "#fff";
+    for (const f of this.flakes) {
+      f.sway += f.swSpd;
+      f.x += wind + Math.sin(f.sway) * 0.5 * DPR;
+      f.y += f.sp;
+      if (f.y > H + 6 * DPR || f.x < -10 * DPR || f.x > W + 10 * DPR) Object.assign(f, this.make(false));
+      ctx.globalAlpha = f.a;
+      ctx.beginPath(); ctx.arc(f.x, f.y, f.r, 0, 7); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  },
+};
+
+/* =========================================================
+   THEME: vortex — particles spiral into the cursor
+   ========================================================= */
+const vortex = {
+  parts: [], maxR: 1,
+  init() {
+    this.maxR = Math.max(W, H) * 0.6;
+    const n = Math.round((W * H) / (7000 * DPR));
+    this.parts = Array.from({ length: n }, () => this.make());
+  },
+  make() { return { ang: rand(0, 7), rad: rand(40 * DPR, this.maxR || 800), sp: rand(0.006, 0.02), hue: rand(190, 320) }; },
+  frame() {
+    ctx.fillStyle = "rgba(8,0,16,0.25)"; ctx.fillRect(0, 0, W, H);
+    ctx.globalCompositeOperation = "lighter";
+    const cx = mouse.x, cy = mouse.y;
+    for (const p of this.parts) {
+      p.ang += p.sp * (1 + (1 - p.rad / this.maxR) * 2);
+      p.rad -= 1.3 * DPR;
+      if (p.rad < 6 * DPR) Object.assign(p, this.make());
+      const x = cx + Math.cos(p.ang) * p.rad;
+      const y = cy + Math.sin(p.ang) * p.rad * 0.62; // squash → depth
+      const s = Math.max(0.5, (1 - p.rad / this.maxR) * 3 * DPR);
+      ctx.fillStyle = `hsla(${p.hue},90%,66%,0.85)`;
+      ctx.beginPath(); ctx.arc(x, y, s, 0, 7); ctx.fill();
+    }
+    ctx.globalCompositeOperation = "source-over";
+  },
+};
+
+/* =========================================================
    Switching + main loop
    ========================================================= */
-const THEMES = { tech, anime, gaming, water, cute };
+const THEMES = { tech, anime, gaming, water, cute, galaxy, matrix, fire, plasma, boids, snow, vortex };
 let active = tech;
 
 const hero = document.getElementById("hero");
@@ -278,6 +521,13 @@ const titles = {
   gaming: { t: "SYNTHWAVE", s: "neon grid · move to steer the horizon 🎮" },
   water:  { t: "Make Waves", s: "every move sends ripples through the deep 🌊" },
   cute:   { t: "Soft & Sparkly", s: "pastel aurora that glows around your cursor 💗" },
+  galaxy: { t: "Hyperspace", s: "stars warp out of wherever you point 🌌" },
+  matrix: { t: "WAKE UP", s: "digital rain · the cursor column burns bright 💚" },
+  fire:   { t: "Playing with Fire", s: "your cursor is a torch — embers rise 🔥" },
+  plasma: { t: "High Voltage", s: "lightning arcs to your every move ⚡" },
+  boids:  { t: "Swarm", s: "a flock that chases your cursor 🐠" },
+  snow:   { t: "Let It Snow", s: "drift the snowfall with your mouse ❄️" },
+  vortex: { t: "Event Horizon", s: "everything spirals into your cursor 🌀" },
 };
 
 function switchTheme(name) {
@@ -300,6 +550,8 @@ let t = 0;
 function loop() {
   t += 0.016;
   updateMouse();
+  ctx.globalAlpha = 1;
+  ctx.globalCompositeOperation = "source-over"; // reset before each theme draws
   active.frame(t);
   // parallax the hero text opposite the mouse
   const px = (mouse.x / W - 0.5);

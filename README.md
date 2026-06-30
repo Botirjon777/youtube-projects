@@ -31,7 +31,7 @@ YYYY-MM-DD-slug/
 | 2026-07-04 | "Will you go on a date?" (No runs away + countdown) | 💖 Love | 🟢 Built |
 | 2026-07-07 | Jank Lab — transform vs left (you've been animating wrong) | ⚡ Performance | 🟢 Built |
 | 2026-07-09 | Debounce vs Throttle — visualized | 🧩 Explainer | 🟢 Built |
-| 2026-07-11 | Interactive hero backgrounds (5 mouse-reactive themes) | ✨ Creative | 🟢 Built |
+| 2026-07-11 | Interactive hero backgrounds (12 mouse-reactive themes) | ✨ Creative | 🟢 Built |
 
 See **[VIRAL-STRATEGY.md](VIRAL-STRATEGY.md)** for what's working and the idea backlog.
 
