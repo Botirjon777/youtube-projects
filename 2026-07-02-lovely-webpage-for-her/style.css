@@ -11,7 +11,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: "Poppins", system-ui, sans-serif;
+  font-family: "Poppins", system-ui, sans-serif, "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji";
   color: var(--ink);
   background: linear-gradient(160deg, var(--cream), var(--soft));
   overflow-x: hidden;

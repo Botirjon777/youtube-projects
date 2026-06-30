@@ -131,7 +131,7 @@ function startCountdown() {
 /* =========================================================
    Floating hearts (shared with the channel style)
    ========================================================= */
-const EMOJIS = ["💖", "💕", "💗", "💓", "🩷", "💞"];
+const EMOJIS = ["💖", "💕", "💗", "💓", "💝", "💞"];
 const heartLayer = $("hearts");
 
 function spawnHeart(x) {

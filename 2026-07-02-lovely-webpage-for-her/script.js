@@ -99,7 +99,7 @@ document.getElementById("surpriseBtn").addEventListener("click", function () {
 });
 
 /* ---------- Floating hearts ---------- */
-const EMOJIS = ["💖", "💕", "💗", "💓", "🩷", "💞"];
+const EMOJIS = ["💖", "💕", "💗", "💓", "💝", "💞"];
 const heartLayer = document.getElementById("hearts");
 
 function spawnHeart(x) {
