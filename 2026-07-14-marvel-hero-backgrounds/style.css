@@ -50,6 +50,24 @@ body[data-theme="thor"]      h1 { color: #cfe3ff; text-shadow: 0 0 20px #6cf, 0 
 body[data-theme="spiderman"] h1 { color: #ff3b3b; text-shadow: 0 0 20px #e62429, 0 0 50px #1a55ff; }
 body[data-theme="antman"]    h1 { color: #ff5bd6; text-shadow: 0 0 20px #b14bff, 0 0 50px #2bd6ff; }
 
+/* Ant-Man control panel */
+.theme-controls {
+  position: fixed; bottom: 3.2rem; left: 50%; transform: translateX(-50%);
+  z-index: 3; display: flex; flex-wrap: wrap; justify-content: center; gap: .4rem;
+  padding: .4rem; border-radius: 16px;
+  background: rgba(255, 255, 255, .12); backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, .25);
+}
+.theme-controls[hidden] { display: none; }
+.theme-controls button {
+  font: inherit; font-weight: 600; font-size: .85rem; color: #fff;
+  background: rgba(255, 255, 255, .12); border: 1px solid rgba(255, 255, 255, .25);
+  border-radius: 999px; padding: .5rem 1rem; cursor: pointer;
+  transition: background .15s, transform .12s;
+}
+.theme-controls button:hover { background: rgba(255, 255, 255, .9); color: #111; transform: translateY(-1px); }
+.theme-controls button:active { transform: translateY(1px); }
+
 footer {
   position: fixed; bottom: 1rem; left: 0; right: 0; text-align: center;
   z-index: 2; font-size: .78rem; opacity: .6; font-family: "JetBrains Mono", monospace;

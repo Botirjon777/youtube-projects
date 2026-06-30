@@ -10,10 +10,13 @@ Open `index.html`. Move your mouse. Switch heroes with the pills.
 ## 🦸 The heroes
 | Hero | Reacts to mouse by… |
 |------|---------------------|
-| 🔴 **Iron Man** | arc-reactor **HUD rings + ticks lock onto your cursor**, repulsor sparks on movement |
-| ⚡ **Thor** | **storm bolts strike the cursor**; Mjölnir crackles electricity around it |
-| 🕷️ **Spider-Man** | a **spider-web shoots from your cursor** to the nearest anchors, with concentric rings |
-| 🐜 **Ant-Man** | shrink into the **Quantum Realm** — a tunnel of neon rings expanding from your cursor |
+| 🔴 **Iron Man** | a full **JARVIS HUD** — targeting reticle locks onto your cursor while live **calculations** run (scrolling hex, system bars, scanning sine-wave, status readouts) over an Iron Man faceplate |
+| ⚡ **Thor** | **Mjölnir is drawn at your cursor**; it crackles, glows, and **storm bolts strike the hammer** |
+| 🕷️ **Spider-Man** | a **smooth classic web** shoots from your cursor — eased center, sagging strands, no jitter |
+| 🐜 **Ant-Man** | **real ants** walk and swarm your cursor; buttons **🔼 Grow / 🔽 Shrink** them and **🏠 Send home** marches them into the anthill (**🐜 Release** brings them back) |
+
+## 🖼️ About the artwork
+The hero "logos" (Iron Man faceplate, Mjölnir, ants, JARVIS UI) are **hand-drawn vector art** — no copyrighted images, crisp at any resolution, 100% offline. Want real licensed artwork instead? Drop e.g. `assets/ironman.png` and load it in that theme's draw step.
 
 ## 🎬 Video outline (Short)
 1. Hook (0–2s): Iron Man HUD snapping to the cursor — "pick your hero."
